@@ -5,7 +5,7 @@ import com.example.coins_project.Data.Remote.Dto.CoinsDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface CoinPaprikaApi {
+interface Api {
 
     @GET("/v1/coins")
     suspend fun getListOfCoins(): List<CoinsDto>

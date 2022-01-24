@@ -2,7 +2,7 @@ package com.example.coins_project.Di
 
 import androidx.lifecycle.SavedStateHandle
 import com.example.coins_project.Common.Constants
-import com.example.coins_project.Data.Remote.CoinPaprikaApi
+import com.example.coins_project.Data.Remote.Api
 import com.example.coins_project.Data.Repository.CoinsRepositoryImpl
 import com.example.coins_project.Domain.Repository.CoinRepository
 import com.example.coins_project.Domain.Use_Case.coin_detail.GetCoinsDetailUseCase
@@ -16,16 +16,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val AppModule = module {
 
-    fun provideRepository(api: CoinPaprikaApi): CoinRepository {
+    fun provideRepository(api: Api): CoinRepository {
         return CoinsRepositoryImpl(api)
     }
 
-    fun getRetrofitRequest(): CoinPaprikaApi {
+    fun getRetrofitRequest(): Api {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(CoinPaprikaApi::class.java)
+            .create(Api::class.java)
 
     }
 
