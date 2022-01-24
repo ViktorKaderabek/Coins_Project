@@ -1,4 +1,4 @@
-package com.example.coins_project.ui.theme
+package com.example.coins_project.Presentation.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

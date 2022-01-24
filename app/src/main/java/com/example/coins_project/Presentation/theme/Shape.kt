@@ -1,4 +1,4 @@
-package com.example.coins_project.ui.theme
+package com.example.coins_project.Presentation.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
