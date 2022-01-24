@@ -4,5 +4,5 @@ import com.example.coins_project.Data.Remote.Dto.CoinsDto
 
 interface CoinRepository {
 
-    suspend fun getListOfCoins() : List<CoinsDto>
+    suspend fun getListOfCoins(): List<CoinsDto>
 }
