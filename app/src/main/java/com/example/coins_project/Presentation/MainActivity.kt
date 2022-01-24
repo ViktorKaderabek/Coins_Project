@@ -17,7 +17,12 @@ import androidx.compose.ui.text.font.FontStyle.Companion.Italic
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.coins_project.Domain.Model.Coins
+import com.example.coins_project.Presentation.Coin_Detail.CoinDetailScreen
+import com.example.coins_project.Presentation.Coin_List.CoinListScreen
 import com.example.coins_project.Presentation.Coin_List.CoinListVIewModel
 import com.example.coins_project.Presentation.theme.Coins_ProjectTheme
 import org.koin.android.ext.android.inject
@@ -30,17 +35,21 @@ class MainActivity : ComponentActivity() {
         setContent {
             Coins_ProjectTheme {
                 Surface(color = MaterialTheme.colors.background) {
-
-                    val state = viewModel.state.value
-                    Box(modifier = Modifier.fillMaxSize()) {
-                        LazyColumn(modifier = Modifier.fillMaxSize()) {
-                            items(state.coinsList) { coins ->
-                                CoinsListItem(
-                                    coins = coins
-                                )
-                            }
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.CoinListScreen.route
+                    ) {
+                        composable(
+                            route = Screen.CoinListScreen.route
+                        ) {
+                            CoinListScreen(navController)
                         }
-
+                        composable(
+                            route = Screen.CoinDetailScreen.route + "/{coinId}"
+                        ) {
+                            CoinDetailScreen()
+                        }
                     }
                 }
             }
@@ -49,29 +58,4 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Composable
-fun CoinsListItem(
-    coins: Coins
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(20.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = "${coins.name} (${coins.symbol})",
-            style = MaterialTheme.typography.body1,
-            overflow = TextOverflow.Ellipsis
-        )
 
-        Text(
-            text = if (coins.is_active) "active" else "inactive",
-            color = if (coins.is_active) Color.Green else Color.Red,
-            fontStyle = Italic,
-            textAlign = TextAlign.End,
-            style = MaterialTheme.typography.body2,
-            modifier = Modifier.align(CenterVertically)
-        )
-    }
-}
