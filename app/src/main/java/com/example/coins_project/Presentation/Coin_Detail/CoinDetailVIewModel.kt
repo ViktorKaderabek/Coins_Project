@@ -26,7 +26,7 @@ class CoinDetailVIewModel(
         }
     }
 
-    private fun getCoins(coinId : String) {
+    private fun getCoins(coinId: String) {
         usecase(coinId).onEach { result ->
             when (result) {
                 is Resources.Sucess -> {

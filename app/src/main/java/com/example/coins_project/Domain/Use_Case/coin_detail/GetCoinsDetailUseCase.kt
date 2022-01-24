@@ -21,7 +21,7 @@ class GetCoinsDetailUseCase(
             val coin = repository.getCoinsById(coinId).toCoinsDetail()
             emit(Resources.Sucess<CoinsDetail>(coin))
         } catch (e: Exception) {
-           Log.e("message", e.message.toString())
+            Log.e("message", e.message.toString())
         }
 
     }

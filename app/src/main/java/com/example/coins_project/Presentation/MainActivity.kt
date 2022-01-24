@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Coins_ProjectTheme {
-                Surface(color = MaterialTheme.colors.background) {
+                Surface(color = MaterialTheme.colors.onBackground) {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,

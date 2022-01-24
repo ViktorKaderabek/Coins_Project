@@ -4,6 +4,6 @@ import com.example.coins_project.Domain.Model.Coins
 import com.example.coins_project.Domain.Model.CoinsDetail
 
 data class CoinDetailViewModelState(
-    val coinsDetail : CoinsDetail? = null
+    val coinsDetail: CoinsDetail? = null
 
 )

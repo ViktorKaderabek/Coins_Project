@@ -24,7 +24,7 @@ import org.koin.androidx.compose.inject
 fun CoinListScreen(
     navController: NavController,
 ) {
-     val viewModel by inject<CoinListVIewModel>()
+    val viewModel by inject<CoinListVIewModel>()
 
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
