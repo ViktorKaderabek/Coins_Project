@@ -4,8 +4,8 @@ import com.example.coins_project.Common.Constants
 import com.example.coins_project.Data.Remote.CoinPaprikaApi
 import com.example.coins_project.Data.Repository.CoinsRepositoryImpl
 import com.example.coins_project.Domain.Repository.CoinRepository
-import com.example.coins_project.Domain.Use_Case.GetCoinsUseCase
-import com.example.coins_project.Presentation.ViewModel.CoinListVIewModel
+import com.example.coins_project.Domain.Use_Case.coin_list.GetCoinsUseCase
+import com.example.coins_project.Presentation.Coin_List.CoinListVIewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
