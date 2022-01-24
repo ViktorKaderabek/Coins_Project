@@ -1,10 +1,13 @@
 package com.example.coins_project.Di
 
+import androidx.lifecycle.SavedStateHandle
 import com.example.coins_project.Common.Constants
 import com.example.coins_project.Data.Remote.CoinPaprikaApi
 import com.example.coins_project.Data.Repository.CoinsRepositoryImpl
 import com.example.coins_project.Domain.Repository.CoinRepository
+import com.example.coins_project.Domain.Use_Case.coin_detail.GetCoinsDetailUseCase
 import com.example.coins_project.Domain.Use_Case.coin_list.GetCoinsUseCase
+import com.example.coins_project.Presentation.Coin_Detail.CoinDetailVIewModel
 import com.example.coins_project.Presentation.Coin_List.CoinListVIewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -30,13 +33,29 @@ val AppModule = module {
         return GetCoinsUseCase(repository)
     }
 
+    fun getDeatilUseCase(repository: CoinRepository): GetCoinsDetailUseCase {
+        return GetCoinsDetailUseCase(repository)
+    }
+
+    fun getSaveHandle(): SavedStateHandle {
+        return SavedStateHandle()
+    }
+
+    single { getSaveHandle() }
+    single { getDeatilUseCase(get()) }
     single { getUseCase(get()) }
     single { provideRepository(get()) }
     single { getRetrofitRequest() }
 }
 
-val ViewModel = module {
+val CoinListViewModel = module {
     viewModel {
         CoinListVIewModel(get())
+    }
+}
+
+val CoinDetailViewModel = module {
+    viewModel {
+        CoinDetailVIewModel(get(), get())
     }
 }
