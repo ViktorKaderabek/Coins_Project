@@ -1,5 +1,6 @@
 package com.example.coins_project.Domain.Use_Case.coin_list
 
+import android.util.Log
 import com.example.coins_project.Common.Resources
 import com.example.coins_project.Data.Remote.Dto.toCoins
 import com.example.coins_project.Domain.Model.Coins
@@ -14,14 +15,12 @@ class GetCoinsUseCase(
 ) {
     operator fun invoke(): Flow<Resources<List<Coins>>> = flow {
         try {
-            emit(Resources.Loading<List<Coins>>())
             val coins = repository.getListOfCoins().map { it.toCoins() }
             emit(Resources.Sucess<List<Coins>>(coins))
-        } catch (e: HttpException) {
-            emit(Resources.Error<List<Coins>>("Error has occured, check your internet connection"))
-        } catch (e: IOException) {
-            emit(Resources.Error<List<Coins>>("Error has occured, check your internet connection"))
+        } catch (e: Exception) {
+            Log.e("message", e.message.toString())
         }
+
 
     }
 }

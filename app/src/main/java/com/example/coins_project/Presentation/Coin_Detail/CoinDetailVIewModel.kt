@@ -29,14 +29,8 @@ class CoinDetailVIewModel(
     private fun getCoins(coinId : String) {
         usecase(coinId).onEach { result ->
             when (result) {
-                is Resources.Loading -> {
-                    _state.value = CoinDetailViewModelState(isLoading = true)
-                }
                 is Resources.Sucess -> {
                     _state.value = CoinDetailViewModelState(coinsDetail = result.data)
-                }
-                is Resources.Error -> {
-                    _state.value = CoinDetailViewModelState(error = "An Error has occured")
                 }
             }
         }.launchIn(viewModelScope)

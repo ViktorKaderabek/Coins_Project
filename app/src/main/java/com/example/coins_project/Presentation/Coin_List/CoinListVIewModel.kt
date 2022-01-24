@@ -23,14 +23,8 @@ class CoinListVIewModel(
     private fun getCoins() {
         usecase().onEach { result ->
             when (result) {
-                is Resources.Loading -> {
-                    _state.value = CoinListViewModelState(isLoading = true)
-                }
                 is Resources.Sucess -> {
                     _state.value = CoinListViewModelState(coinsList = result.data ?: emptyList())
-                }
-                is Resources.Error -> {
-                    _state.value = CoinListViewModelState(error = "An Error has occured")
                 }
             }
         }.launchIn(viewModelScope)
