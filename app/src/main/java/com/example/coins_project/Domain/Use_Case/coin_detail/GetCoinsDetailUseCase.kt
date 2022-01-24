@@ -18,9 +18,12 @@ class GetCoinsDetailUseCase(
 ) {
     operator fun invoke(coinId: String): Flow<Resources<CoinsDetail>> = flow {
         try {
+
             val coin = repository.getCoinsById(coinId).toCoinsDetail()
             emit(Resources.Sucess<CoinsDetail>(coin))
+
         } catch (e: Exception) {
+
             Log.e("message", e.message.toString())
         }
 

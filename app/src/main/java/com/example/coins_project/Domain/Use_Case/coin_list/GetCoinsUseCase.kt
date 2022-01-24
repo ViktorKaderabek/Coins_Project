@@ -15,9 +15,12 @@ class GetCoinsUseCase(
 ) {
     operator fun invoke(): Flow<Resources<List<Coins>>> = flow {
         try {
+
             val coins = repository.getListOfCoins().map { it.toCoins() }
             emit(Resources.Sucess<List<Coins>>(coins))
+
         } catch (e: Exception) {
+
             Log.e("message", e.message.toString())
         }
 
