@@ -1,4 +1,4 @@
-package com.example.coins_project.Domain.Use_Case
+package com.example.coins_project.Domain.Use_Case.coin_list
 
 import com.example.coins_project.Common.Resources
 import com.example.coins_project.Data.Remote.Dto.toCoins
