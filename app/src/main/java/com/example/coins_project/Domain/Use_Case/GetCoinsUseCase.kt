@@ -13,19 +13,14 @@ class GetCoinsUseCase(
     private val repository: CoinRepository
 ) {
     operator fun invoke(): Flow<Resources<List<Coins>>> = flow {
-        try
-        {
-            emit(Resources.Loading())
+        try {
+            emit(Resources.Loading<List<Coins>>())
             val coins = repository.getListOfCoins().map { it.toCoins() }
-            emit(Resources.Sucess(coins))
-        }
-        catch (e: HttpException)
-        {
-           emit(Resources.Error("Error has occured, check your internet connection"))
-        }
-        catch (e : IOException)
-        {
-            emit(Resources.Error("Error has occured, check your internet connection"))
+            emit(Resources.Sucess<List<Coins>>(coins))
+        } catch (e: HttpException) {
+            emit(Resources.Error<List<Coins>>("Error has occured, check your internet connection"))
+        } catch (e: IOException) {
+            emit(Resources.Error<List<Coins>>("Error has occured, check your internet connection"))
         }
 
     }
