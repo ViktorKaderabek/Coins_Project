@@ -83,6 +83,7 @@ fun CoinListItem(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight()
+            .clickable { onItemClick(coin) }
             .padding(10.dp)
     ) {
         Card(
