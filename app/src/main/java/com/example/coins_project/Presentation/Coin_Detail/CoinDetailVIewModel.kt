@@ -13,17 +13,15 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
 class CoinDetailVIewModel(
-    private val usecase: GetCoinsDetailUseCase,
-    private val savedStateHandle: SavedStateHandle
+    private val usecase: GetCoinsDetailUseCase
+
 ) : ViewModel() {
 
     private val _state = mutableStateOf(CoinDetailViewModelState())
     val state: State<CoinDetailViewModelState> = _state
 
     init {
-        savedStateHandle.get<String>(Constants.PARAM_COIN_ID)?.let { coinId ->
-            getCoins(coinId)
-        }
+
     }
 
     private fun getCoins(coinId: String) {

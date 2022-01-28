@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 interface Api {
 
-    @GET("Coins")
+    @GET("/v1/coins")
     suspend fun getListOfCoins(): List<CoinsDto>
 
     @GET("/v1/coins/{coinId}")
