@@ -56,6 +56,6 @@ val CoinListViewModel = module {
 
 val CoinDetailViewModel = module {
     viewModel {
-        CoinDetailVIewModel(get(), get())
+        CoinDetailVIewModel(get())
     }
 }

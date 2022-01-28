@@ -21,7 +21,7 @@ class CoinDetailVIewModel(
     val state: State<CoinDetailViewModelState> = _state
 
     init {
-
+        getCoins("btc-bitcoin")
     }
 
     private fun getCoins(coinId: String) {
