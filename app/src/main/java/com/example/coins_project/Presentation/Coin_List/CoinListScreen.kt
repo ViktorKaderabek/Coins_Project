@@ -1,5 +1,6 @@
 package com.example.coins_project.Presentation.Coin_List
 
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -28,7 +29,7 @@ class CoinListScreen{
 
 @Composable
 fun CoinListScreen(
-    navController: NavController?,
+    navController: NavController,
 ) {
     val viewModel by inject<CoinListVIewModel>()
     val state = viewModel.state.value
@@ -38,8 +39,9 @@ fun CoinListScreen(
                 CoinListItem(
                     coin = coin,
                     onItemClick = {
-                        navController?.navigate(Screen.CoinDetailScreen.route + "/${coin.id}")
+                        navController.navigate(Screen.CoinDetailScreen.route + "/id")
                         coinId = coin.id
+                        Log.e("message", (coin.name +   coin.symbol +  coin.id).toString())
                     }
                 )
             }

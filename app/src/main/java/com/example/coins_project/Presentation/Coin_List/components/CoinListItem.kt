@@ -27,53 +27,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.coins_project.Domain.Model.Coins
 
-/*@Composable
-fun CoinListItem(
-    coin: Coins,
-    onItemClick: (Coins) -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onItemClick(coin) }
-            .padding(20.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Text(
-            text = "${coin.rank}. ${coin.name} (${coin.symbol})",
-            style = MaterialTheme.typography.body1,
-            overflow = TextOverflow.Ellipsis
-        )
-        Text(
-            text = if (coin.is_active) "active" else "inactive",
-            color = if (coin.is_active) Color.Green else Color.Red,
-            fontStyle = FontStyle.Italic,
-            textAlign = TextAlign.End,
-            style = MaterialTheme.typography.body2,
-            modifier = Modifier.align(CenterVertically)
-        )
-
-    }
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onItemClick(coin) }
-            .padding(
-                start = 40.dp,
-                bottom = 30.dp
-            )
-    ) {
-        Text(
-            text = "Type : ${coin.type}",
-            style = MaterialTheme.typography.body1,
-            overflow = TextOverflow.Ellipsis,
-            color = Color.Gray,
-            fontSize = 15.sp
-        )
-    }
-
-}*/
-
 @Composable
 fun CoinListItem(
     coin: Coins,
@@ -118,24 +71,28 @@ fun CoinListItem(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable { onItemClick(coin) }
-                            .padding(20.dp),
+                            .padding(10.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
 
                         Text(
                             "${coin.rank}. ${coin.name} (${coin.symbol})",
-                            style = TextStyle(color = Color.White, fontSize = 16.sp)
+                            style = TextStyle(color = Color.White, fontSize = 14.sp),
+                            overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = "Type : (${coin.type})",
-                            style = TextStyle(color = Color.White, fontSize = 14.sp)
+                            style = TextStyle(color = Color.White, fontSize = 10.sp),
+                            overflow = TextOverflow.Ellipsis
                         )
 
                         Text(
                             text = if (coin.is_active) "active" else "not active",
                             color = if (coin.is_active) Color.Green else Color.Red,
                             fontStyle = Italic,
-                            textAlign = TextAlign.End
+                            textAlign = TextAlign.End,
+                            overflow = TextOverflow.Ellipsis,
+                            fontSize = 10.sp
                         )
                     }
                 }
