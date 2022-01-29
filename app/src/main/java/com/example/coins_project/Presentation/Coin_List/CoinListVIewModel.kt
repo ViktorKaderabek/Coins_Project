@@ -6,8 +6,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.coins_project.Common.Resources
 import com.example.coins_project.Domain.Use_Case.coin_list.GetCoinsUseCase
+import com.example.coins_project.Presentation.Screen
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import org.koin.core.KoinApplication.Companion.init
 
 class CoinListVIewModel(
     private val usecase: GetCoinsUseCase

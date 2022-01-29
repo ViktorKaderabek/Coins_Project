@@ -9,6 +9,7 @@ import com.example.coins_project.Common.Constants
 import com.example.coins_project.Common.Resources
 import com.example.coins_project.Domain.Use_Case.coin_detail.GetCoinsDetailUseCase
 import com.example.coins_project.Domain.Use_Case.coin_list.GetCoinsUseCase
+import com.example.coins_project.Presentation.Coin_List.CoinListScreen
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 
@@ -19,9 +20,10 @@ class CoinDetailVIewModel(
 
     private val _state = mutableStateOf(CoinDetailViewModelState())
     val state: State<CoinDetailViewModelState> = _state
+    private val coinId : String = CoinListScreen.coinId.toString()
 
     init {
-        getCoins("btc-bitcoin")
+        getCoins(coinId)
     }
 
     private fun getCoins(coinId: String) {

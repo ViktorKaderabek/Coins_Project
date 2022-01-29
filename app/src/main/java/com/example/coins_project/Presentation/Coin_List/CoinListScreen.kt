@@ -15,17 +15,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.coins_project.Presentation.Coin_List.CoinListScreen.Companion.coinId
 import com.example.coins_project.Presentation.Coin_List.components.CoinListItem
 import com.example.coins_project.Presentation.Screen
 import org.koin.androidx.compose.inject
 
+class CoinListScreen{
+    companion object{
+    var coinId : String? = null
+    }
+}
 
 @Composable
 fun CoinListScreen(
-    navController: NavController,
+    navController: NavController?,
 ) {
     val viewModel by inject<CoinListVIewModel>()
-
     val state = viewModel.state.value
     Box(modifier = Modifier.fillMaxSize()) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -33,7 +38,8 @@ fun CoinListScreen(
                 CoinListItem(
                     coin = coin,
                     onItemClick = {
-                        navController.navigate(Screen.CoinDetailScreen.route + "/${coin.id}")
+                        navController?.navigate(Screen.CoinDetailScreen.route + "/${coin.id}")
+                        coinId = coin.id
                     }
                 )
             }
