@@ -13,8 +13,10 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle.Companion.Italic
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.coins_project.Presentation.Coin_Detail.components.TeamListItem
 import com.google.accompanist.flowlayout.FlowRow
 import org.koin.androidx.compose.inject
@@ -22,8 +24,7 @@ import org.koin.core.component.KoinComponent
 
 
 @Composable
-fun CoinDetailScreen(
-) {
+fun CoinDetailScreen() {
     val viewModel by inject<CoinDetailVIewModel>()
 
     val state = viewModel.state.value
@@ -40,33 +41,21 @@ fun CoinDetailScreen(
                     ) {
                         Text(
                             text = "${coin.rank}. ${coin.name} (${coin.symbol})",
-                            style = MaterialTheme.typography.h2,
-                            modifier = Modifier.weight(8f)
-                        )
-                        Text(
-                            text = if (coin.isActive) "active" else "inactive",
-                            color = if (coin.isActive) Color.Green else Color.Red,
-                            fontStyle = Italic,
-                            textAlign = TextAlign.End,
-                            modifier = Modifier
-                                .align(CenterVertically)
-                                .weight(2f)
+                            fontSize = 20.sp,
+                            modifier = Modifier.weight(8f),
+                            fontWeight = FontWeight.Bold
                         )
                     }
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         text = coin.description,
-                        style = MaterialTheme.typography.body2
-                    )
-                    Spacer(modifier = Modifier.height(15.dp))
-                    Text(
-                        text = "Tags",
-                        style = MaterialTheme.typography.h3
+                        fontSize = 20.sp
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     Text(
                         text = "Team members",
-                        style = MaterialTheme.typography.h3
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                 }

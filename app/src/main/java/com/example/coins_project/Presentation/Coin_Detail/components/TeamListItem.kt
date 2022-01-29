@@ -9,8 +9,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle.Companion.Italic
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.coins_project.Data.Remote.Dto.TeamMember
 
 @Composable
@@ -24,7 +26,8 @@ fun TeamListItem(
     ) {
         Text(
             text = teamMember.name,
-            style = MaterialTheme.typography.h4
+            fontSize = 20.sp,
+            color = Color.Green
         )
         Spacer(modifier = Modifier.height(4.dp))
         Text(
